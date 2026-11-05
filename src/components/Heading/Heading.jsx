@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from '../Button'
 
 function Heading() {
   const [heading, setHeading] = useState('Pokemon Project')
@@ -6,7 +7,7 @@ function Heading() {
   return (
     <header>
       <h1>{heading}</h1>
-      <button type="button" onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</button>
+      <Button onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</Button>
     </header>
   )
 }

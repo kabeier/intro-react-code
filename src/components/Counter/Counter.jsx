@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Button from '../Button'
 
 function Counter() {
   const [count, setCount] = useState(0)
@@ -11,7 +12,7 @@ function Counter() {
   return (
     <>
       <h3>Total Clicks: {count}</h3>
-      <button type="button" onClick={() => setCount((count) => count + 1)}>Click me!</button>
+      <Button onClick={() => setCount((count) => count + 1)}>Click me!</Button>
     </>
   )
 }
