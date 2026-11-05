@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
 
 function App() {
+  const [heading, setHeading] = useState('Pokemon Project')
+
   const generateCard = (data) => {
     if (document.getElementById(`${data.name}-card`)) return
     const card = document.createElement("div")
@@ -41,7 +44,8 @@ function App() {
   return (
     <>
       <header>
-        <h1>Pokemon Project</h1>
+        <h1>{heading}</h1>
+        <button type="button" onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</button>
       </header>
       <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pokemon-name">Pokemon Name</label>
