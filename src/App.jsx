@@ -6,6 +6,7 @@ import { Outlet } from 'react-router'
 
 function App() {
   const [pokemonList, setPokemonList] = useState([])
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     console.log('page mounted')
@@ -27,7 +28,7 @@ function App() {
       <NavBar />
       <main className="mx-auto max-w-5xl space-y-6 p-6">
         <Heading />
-        <Outlet context={{ pokemonList, setPokemonList }} />
+        <Outlet context={{ pokemonList, setPokemonList, count, setCount }} />
       </main>
     </>
   )

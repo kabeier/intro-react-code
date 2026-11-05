@@ -49,3 +49,12 @@ it('does not bring Pikachu back after it was removed', () => {
   cy.get('#charizard-card').should('be.visible')
   cy.get('#poke-container').children().should('have.length', 1)
 })
+
+
+it('keeps the click count across pages', () => {
+  cy.visit('/')
+  cy.contains('button', 'Click me!').click().click()
+  cy.get('nav').contains('a', 'About').click()
+  cy.get('nav').contains('a', 'Home').click()
+  cy.contains('Total Clicks: 2')
+})
