@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
-import Counter from './components/Counter/Counter'
+import Heading from './components/Heading'
+import Counter from './components/Counter'
 
 function App() {
-  const [heading, setHeading] = useState('Pokemon Project')
   const [pokemonName, setPokemonName] = useState('')
   const [pokemonList, setPokemonList] = useState([])
 
@@ -54,10 +54,7 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>{heading}</h1>
-        <button type="button" onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</button>
-      </header>
+      <Heading />
       <Counter />
       <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pokemon-name">Pokemon Name</label>
