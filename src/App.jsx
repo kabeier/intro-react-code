@@ -16,11 +16,15 @@ function App() {
     document.querySelector("#poke-container").appendChild(card)
   }
 
-  const getPokemonData = (name) => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then((response) => generateCard(response.data))
-      .catch((error) => console.error("Request failed:", error.message))
-      .finally(() => console.log("Request completed"))
+  const getPokemonData = async (name) => {
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      generateCard(response.data)
+    } catch (error) {
+      console.error("Request failed:", error.message)
+    } finally {
+      console.log("Request completed")
+    }
   }
 
   const handleSubmit = (event) => {
