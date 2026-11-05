@@ -1,5 +1,5 @@
-import Card from './Card'
-import Banner from './Banner'
+import Card from './components/Card'
+import Banner from './components/Banner'
 
 function App() {
   return (
