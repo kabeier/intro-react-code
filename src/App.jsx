@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Heading from './components/Heading'
-import Counter from './components/Counter'
-import PokeSearch from './components/PokeSearch'
+import { Outlet } from 'react-router'
 
 function App() {
   useEffect(() => {
@@ -12,8 +11,7 @@ function App() {
   return (
     <main className="mx-auto max-w-5xl space-y-6 p-6">
       <Heading />
-      <Counter />
-      <PokeSearch />
+      <Outlet />
     </main>
   )
 }
