@@ -14,3 +14,8 @@ it('changes the title when you click Change Title', () => {
   cy.get('header button').click()
   cy.get('header h1').should('have.text', 'Pokemon Project: Day 2')
 })
+
+it('counts clicks', () => {
+  cy.contains('button', 'Click me!').click().click()
+  cy.contains('Total Clicks: 2')
+})

@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [heading, setHeading] = useState('Pokemon Project')
+  const [count, setCount] = useState(0)
 
   const generateCard = (data) => {
     if (document.getElementById(`${data.name}-card`)) return
@@ -47,6 +48,8 @@ function App() {
         <h1>{heading}</h1>
         <button type="button" onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</button>
       </header>
+      <h3>Total Clicks: {count}</h3>
+      <button type="button" onClick={() => setCount((count) => count + 1)}>Click me!</button>
       <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pokemon-name">Pokemon Name</label>
         <input id="pokemon-name" type="text" name="name" placeholder="pikachu" />
