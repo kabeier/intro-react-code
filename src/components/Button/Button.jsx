@@ -1,12 +1,10 @@
-function Button({ children, className = '', ...props }) {
+import BsButton from 'react-bootstrap/Button'
+
+function Button({ children, ...props }) {
   return (
-    <button
-      type="button"
-      className={`rounded-md bg-blue-600 px-3 py-1.5 font-semibold text-white hover:bg-blue-700 ${className}`}
-      {...props}
-    >
+    <BsButton variant="primary" {...props}>
       {children}
-    </button>
+    </BsButton>
   )
 }
 
