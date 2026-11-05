@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
@@ -7,14 +7,17 @@ import Spinner from 'react-bootstrap/Spinner'
 function PokemonDetailsPage() {
   const { id } = useParams()
   const [pokemon, setPokemon] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     let ignore = false
     axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => { if (!ignore) setPokemon(response.data) })
+      .catch(() => { if (!ignore) setError('Pokemon not found') })
     return () => { ignore = true }
   }, [id])
 
+  if (error) return <p>{error}. <Link to="/">Back home</Link></p>
   if (!pokemon) return <Spinner animation="border" role="status" />
 
   return (

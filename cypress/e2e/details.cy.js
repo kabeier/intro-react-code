@@ -10,3 +10,9 @@ it('shows the Pokemon from the API', () => {
   cy.get('img[alt=pikachu]').should('be.visible')
   cy.contains('Type: electric')
 })
+
+
+it('shows a message for an unknown Pokemon', () => {
+  cy.visit('/pokemon/99999')
+  cy.contains('Pokemon not found')
+})
