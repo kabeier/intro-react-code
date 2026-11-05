@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import PokeContainer from './PokeContainer'
+import PokeForm from './PokeForm'
 
 function PokeSearch() {
   const [pokemonName, setPokemonName] = useState('')
@@ -47,15 +48,7 @@ function PokeSearch() {
 
   return (
     <>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <label htmlFor="pokemon-name">Pokemon Name</label>
-        <input
-          id="pokemon-name" type="text" name="name" placeholder="pikachu"
-          value={pokemonName}
-          onChange={(event) => setPokemonName(event.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <PokeForm handleSubmit={handleSubmit} pokemonName={pokemonName} setPokemonName={setPokemonName} />
       <PokeContainer pokemonList={pokemonList} rmData={rmData} />
     </>
   )
