@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Heading from './components/Heading'
 import NavBar from './components/NavBar'
 import { Outlet } from 'react-router'
@@ -9,6 +10,16 @@ function App() {
   useEffect(() => {
     console.log('page mounted')
     return () => console.log('page unmounted')
+  }, [])
+
+  useEffect(() => {
+    let ignore = false
+    axios.get('https://pokeapi.co/api/v2/pokemon/pikachu')
+      .then((response) => {
+        if (ignore) return
+        setPokemonList((list) => (list.some((pokemon) => pokemon.id === response.data.id) ? list : [...list, response.data]))
+      })
+    return () => { ignore = true }
   }, [])
 
   return (

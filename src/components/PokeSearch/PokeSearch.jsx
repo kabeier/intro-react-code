@@ -16,13 +16,6 @@ function PokeSearch() {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
   }
 
-  useEffect(() => {
-    let ignore = false
-    axios.get('https://pokeapi.co/api/v2/pokemon/pikachu')
-      .then((response) => { if (!ignore) addPokemonData(response.data) })
-    return () => { ignore = true }
-  }, [])
-
   const rmData = (id) => {
     setPokemonList((list) => list.filter((pokemon) => pokemon.id !== id))
   }
