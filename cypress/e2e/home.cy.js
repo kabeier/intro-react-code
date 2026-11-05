@@ -25,3 +25,7 @@ it('changes the background when you click', () => {
   cy.contains('button', 'Click me!').click()
   cy.get('body').should('have.css', 'background-color', 'rgb(144, 238, 144)')
 })
+
+it('shows the Pokedex number on each card', () => {
+  cy.get('#pikachu-card').should('contain', '#25')
+})
