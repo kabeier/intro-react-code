@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
@@ -7,6 +7,11 @@ function App() {
   const [count, setCount] = useState(0)
   const [pokemonName, setPokemonName] = useState('')
   const [pokemonList, setPokemonList] = useState([])
+
+  useEffect(() => {
+    console.log('page mounted')
+    return () => console.log('page unmounted')
+  }, [])
 
   const addPokemonData = (data) => {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
