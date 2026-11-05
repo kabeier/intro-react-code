@@ -28,3 +28,11 @@ jobs:
           install: false
           start: npm run dev
           wait-on: 'http://localhost:5173/'
+
+      - name: Cypress (built site)
+        uses: cypress-io/github-action@v7
+        with:
+          install: false
+          start: npm run preview
+          wait-on: 'http://localhost:4173/pokemon-app/'
+          config: baseUrl=http://localhost:4173/pokemon-app/,specPattern=cypress/e2e-prod/**/*.cy.js
