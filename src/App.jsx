@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Heading from './components/Heading'
+import NavBar from './components/NavBar'
 import { Outlet } from 'react-router'
 
 function App() {
@@ -9,10 +10,13 @@ function App() {
   }, [])
 
   return (
-    <main className="mx-auto max-w-5xl space-y-6 p-6">
-      <Heading />
-      <Outlet />
-    </main>
+    <>
+      <NavBar />
+      <main className="mx-auto max-w-5xl space-y-6 p-6">
+        <Heading />
+        <Outlet />
+      </main>
+    </>
   )
 }
 

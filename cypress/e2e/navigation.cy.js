@@ -15,3 +15,11 @@ it('shows the error page inside the layout when a page crashes', () => {
   cy.contains('h2', 'Something went wrong')
   cy.get('header').should('be.visible')
 })
+
+it('navigates with the navbar without reloading the page', () => {
+  cy.visit('/')
+  cy.window().then((win) => { win.noReload = true })
+  cy.get('nav').contains('a', 'About').click()
+  cy.location('pathname').should('eq', '/about')
+  cy.window().its('noReload').should('eq', true)
+})
