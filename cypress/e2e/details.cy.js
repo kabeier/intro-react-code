@@ -24,3 +24,20 @@ it('opens the details page from a card', () => {
   cy.location('pathname').should('eq', '/pokemon/25')
   cy.contains('h2', 'pikachu')
 })
+
+
+it('goes back with the Back button', () => {
+  cy.visit('/')
+  cy.get('#pikachu-card a').contains('Details').click()
+  cy.location('pathname').should('eq', '/pokemon/25')
+  cy.get('button[aria-label="Go back"]').click()
+  cy.location('pathname').should('eq', '/')
+})
+
+it('the browser Back button works too', () => {
+  cy.visit('/')
+  cy.get('#pikachu-card a').contains('Details').click()
+  cy.location('pathname').should('eq', '/pokemon/25')
+  cy.go('back')
+  cy.location('pathname').should('eq', '/')
+})

@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import BackButton from '../BackButton'
 
 function NavBar() {
   return (
@@ -10,6 +11,7 @@ function NavBar() {
         <Nav.Link as={Link} to="/">Home</Nav.Link>
         <Nav.Link as={Link} to="/about">About</Nav.Link>
       </Nav>
+      <BackButton />
     </Navbar>
   )
 }
