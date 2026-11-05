@@ -29,3 +29,7 @@ it('changes the background when you click', () => {
 it('shows the Pokedex number on each card', () => {
   cy.get('#pikachu-card').should('contain', '#25')
 })
+
+it('keeps the Tailwind layout after Bootstrap loads', () => {
+  cy.get('#poke-container').should('have.css', 'column-gap', '20px')
+})
