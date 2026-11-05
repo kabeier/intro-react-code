@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Pokemon Project</h1>
-      <p className="myText">{message}</p>
+      <p className="myText" style={{ color: "red" }}>{message}</p>
       <p>{sayHello()}</p>
     </>
   )
