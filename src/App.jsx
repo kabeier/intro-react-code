@@ -5,6 +5,7 @@ import './App.css'
 function App() {
   const [heading, setHeading] = useState('Pokemon Project')
   const [count, setCount] = useState(0)
+  const [pokemonName, setPokemonName] = useState('')
 
   const generateCard = (data) => {
     if (document.getElementById(`${data.name}-card`)) return
@@ -35,11 +36,10 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const data = Object.fromEntries(new FormData(event.target))
-    const name = data.name.trim().toLowerCase()
+    const name = pokemonName.trim().toLowerCase()
     if (!name) return
     getPokemonData(name)
-    event.target.reset()
+    setPokemonName('')
   }
 
   return (
@@ -52,7 +52,11 @@ function App() {
       <button type="button" onClick={() => setCount((count) => count + 1)}>Click me!</button>
       <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pokemon-name">Pokemon Name</label>
-        <input id="pokemon-name" type="text" name="name" placeholder="pikachu" />
+        <input
+          id="pokemon-name" type="text" name="name" placeholder="pikachu"
+          value={pokemonName}
+          onChange={(event) => setPokemonName(event.target.value)}
+        />
         <button type="submit">Search</button>
       </form>
       <div id="poke-container"></div>
