@@ -41,3 +41,17 @@ it('the browser Back button works too', () => {
   cy.go('back')
   cy.location('pathname').should('eq', '/')
 })
+
+
+it('logs in and goes home', () => {
+  cy.visit('/login')
+  cy.get('#username').type('ash')
+  cy.contains('button', 'Log In').click()
+  cy.location('pathname').should('eq', '/')
+})
+
+it('stays on the login page with an empty name', () => {
+  cy.visit('/login')
+  cy.contains('button', 'Log In').click()
+  cy.location('pathname').should('eq', '/login')
+})

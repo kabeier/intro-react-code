@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import PokemonDetailsPage from './pages/PokemonDetailsPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
           { index: true, element: <HomePage /> },
           { path: 'about', element: <AboutPage /> },
           { path: 'pokemon/:id', element: <PokemonDetailsPage /> },
+          { path: 'login', element: <LoginPage /> },
           { path: '*', element: <NotFoundPage /> },
         ],
       },

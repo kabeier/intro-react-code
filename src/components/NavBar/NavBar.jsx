@@ -10,6 +10,7 @@ function NavBar() {
       <Nav>
         <Nav.Link as={Link} to="/">Home</Nav.Link>
         <Nav.Link as={Link} to="/about">About</Nav.Link>
+        <Nav.Link as={Link} to="/login">Log In</Nav.Link>
       </Nav>
       <BackButton />
     </Navbar>
