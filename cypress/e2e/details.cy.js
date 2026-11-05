@@ -16,3 +16,11 @@ it('shows a message for an unknown Pokemon', () => {
   cy.visit('/pokemon/99999')
   cy.contains('Pokemon not found')
 })
+
+
+it('opens the details page from a card', () => {
+  cy.visit('/')
+  cy.get('#pikachu-card a').contains('Details').click()
+  cy.location('pathname').should('eq', '/pokemon/25')
+  cy.contains('h2', 'pikachu')
+})

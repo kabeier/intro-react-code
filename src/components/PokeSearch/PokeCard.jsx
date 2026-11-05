@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Badge from 'react-bootstrap/Badge'
 import Stack from 'react-bootstrap/Stack'
 import BsButton from 'react-bootstrap/Button'
+import { Link } from 'react-router'
 
 function PokeCard({ pokemon, rmData }) {
   const [shiny, setShiny] = useState(false)
@@ -16,6 +17,7 @@ function PokeCard({ pokemon, rmData }) {
         <Stack direction="horizontal" gap={2}>
           <BsButton variant={shiny ? 'secondary' : 'warning'} onClick={() => setShiny((shiny) => !shiny)}>{shiny ? 'Make Normal' : 'Make Shiny'}</BsButton>
           <BsButton variant="danger" onClick={() => rmData(pokemon.id)}>Remove</BsButton>
+          <BsButton as={Link} to={`/pokemon/${pokemon.id}`} variant="outline-primary">Details</BsButton>
         </Stack>
       </Card.Body>
     </Card>
