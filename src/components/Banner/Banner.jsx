@@ -1,7 +1,7 @@
-import './Banner.css'
+import styles from './Banner.module.css'
 
 function Banner() {
-  return <h2 className="title">Banner title</h2>
+  return <h2 className={`${styles.title} ${styles.big}`}>Banner title</h2>
 }
 
 export default Banner
