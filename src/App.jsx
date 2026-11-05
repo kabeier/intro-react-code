@@ -13,6 +13,10 @@ function App() {
     return () => console.log('page unmounted')
   }, [])
 
+  useEffect(() => {
+    console.log('pokemon list changed', pokemonList)
+  }, [pokemonList])
+
   const addPokemonData = (data) => {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
   }
