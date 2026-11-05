@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import PokeCard from './PokeCard'
 
 function PokeSearch() {
   const [pokemonName, setPokemonName] = useState('')
@@ -57,11 +58,7 @@ function PokeSearch() {
       </form>
       <div id="poke-container">
         {pokemonList.map((pokemon) => (
-          <div className="card" id={`${pokemon.name}-card`} key={pokemon.id}>
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <h3>{pokemon.name}</h3>
-            <button type="button" onClick={() => rmData(pokemon.id)}>Remove</button>
-          </div>
+          <PokeCard key={pokemon.id} pokemon={pokemon} rmData={rmData} />
         ))}
       </div>
     </>
