@@ -70,3 +70,8 @@ it('keeps a card shiny when another card is removed', () => {
   cy.get('#pikachu-card').should('not.exist')
   cy.get('#bulbasaur-card img').should('have.attr', 'src').and('include', 'shiny')
 })
+
+it('lays the cards out in a wrapping row', () => {
+  cy.get('#poke-container').should('have.css', 'display', 'flex')
+  cy.get('#poke-container').should('have.css', 'flex-wrap', 'wrap')
+})

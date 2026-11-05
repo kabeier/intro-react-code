@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import './App.css'
 import Heading from './components/Heading'
 import Counter from './components/Counter'
 import PokeSearch from './components/PokeSearch'
