@@ -17,6 +17,11 @@ function App() {
     console.log('pokemon list changed', pokemonList)
   }, [pokemonList])
 
+  useEffect(() => {
+    const colors = ['lightblue', 'lightgreen', 'lightpink', 'lightyellow', 'lightsalmon']
+    document.body.style.backgroundColor = colors[count % colors.length]
+  }, [count])
+
   const addPokemonData = (data) => {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
   }
