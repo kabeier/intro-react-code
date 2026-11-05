@@ -45,3 +45,9 @@ it('alerts when a Pokemon does not exist', () => {
   cy.get('input[id=pokemon-name]').type('pikachoo{enter}')
   cy.wrap(alerts).should('include', 'Pokemon Does not Exist')
 })
+
+it('can remove a card', () => {
+  cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
+  cy.get('#bulbasaur-card button').contains('Remove').click()
+  cy.get('#bulbasaur-card').should('not.exist')
+})

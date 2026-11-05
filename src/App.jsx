@@ -12,6 +12,10 @@ function App() {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
   }
 
+  const rmData = (id) => {
+    setPokemonList((list) => list.filter((pokemon) => pokemon.id !== id))
+  }
+
   const getPokemonData = async (name) => {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -54,6 +58,7 @@ function App() {
           <div className="card" id={`${pokemon.name}-card`} key={pokemon.id}>
             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             <h3>{pokemon.name}</h3>
+            <button type="button" onClick={() => rmData(pokemon.id)}>Remove</button>
           </div>
         ))}
       </div>
