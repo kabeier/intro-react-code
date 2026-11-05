@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
+import Counter from './components/Counter/Counter'
 
 function App() {
   const [heading, setHeading] = useState('Pokemon Project')
-  const [count, setCount] = useState(0)
   const [pokemonName, setPokemonName] = useState('')
   const [pokemonList, setPokemonList] = useState([])
 
@@ -16,11 +16,6 @@ function App() {
   useEffect(() => {
     console.log('pokemon list changed', pokemonList)
   }, [pokemonList])
-
-  useEffect(() => {
-    const colors = ['lightblue', 'lightgreen', 'lightpink', 'lightyellow', 'lightsalmon']
-    document.body.style.backgroundColor = colors[count % colors.length]
-  }, [count])
 
   const addPokemonData = (data) => {
     setPokemonList((list) => (list.some((pokemon) => pokemon.id === data.id) ? list : [...list, data]))
@@ -63,8 +58,7 @@ function App() {
         <h1>{heading}</h1>
         <button type="button" onClick={() => setHeading('Pokemon Project: Day 2')}>Change Title</button>
       </header>
-      <h3>Total Clicks: {count}</h3>
-      <button type="button" onClick={() => setCount((count) => count + 1)}>Click me!</button>
+      <Counter />
       <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pokemon-name">Pokemon Name</label>
         <input
