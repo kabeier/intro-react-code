@@ -1,12 +1,21 @@
+import axios from 'axios'
 import './App.css'
 
 function App() {
+  const getPokemonData = (name) => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      .then((response) => console.log(response.data))
+      .catch((error) => console.error("Request failed:", error.message))
+      .finally(() => console.log("Request completed"))
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = Object.fromEntries(new FormData(event.target))
     const name = data.name.trim().toLowerCase()
     if (!name) return
-    console.log(name)
+    getPokemonData(name)
+    event.target.reset()
   }
 
   return (
