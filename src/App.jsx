@@ -1,13 +1,17 @@
 import './App.css'
 
 function App() {
-  let message = "Hello Pokemon trainers"
-  const sayHello = () => "Hello from a function"
   return (
     <>
-      <h1>Pokemon Project</h1>
-      <p className="myText" style={{ color: "red" }}>{message}</p>
-      <p>{sayHello()}</p>
+      <header>
+        <h1>Pokemon Project</h1>
+      </header>
+      <form>
+        <label htmlFor="pokemon-name">Pokemon Name</label>
+        <input id="pokemon-name" type="text" name="name" placeholder="pikachu" />
+        <button type="submit">Search</button>
+      </form>
+      <div id="poke-container"></div>
     </>
   )
 }
