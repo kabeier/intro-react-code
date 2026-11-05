@@ -21,3 +21,27 @@ it('clears the input after a search', () => {
   cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
   cy.get('input[id=pokemon-name]').should('have.value', '')
 })
+
+it('does nothing on an empty search', () => {
+  const alerts = []
+  cy.on('window:alert', (text) => alerts.push(text))
+  cy.get('button[type=submit]').click()
+  cy.wait(1000)
+  cy.wrap(alerts).should('have.length', 0)
+})
+
+it('does not add the same Pokemon twice', () => {
+  cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
+  cy.get('#bulbasaur-card').should('be.visible')
+  cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
+  cy.get('input[id=pokemon-name]').type('Charizard{enter}')
+  cy.get('#charizard-card').should('be.visible')
+  cy.get('[id="bulbasaur-card"]').should('have.length', 1)
+})
+
+it('alerts when a Pokemon does not exist', () => {
+  const alerts = []
+  cy.on('window:alert', (text) => alerts.push(text))
+  cy.get('input[id=pokemon-name]').type('pikachoo{enter}')
+  cy.wrap(alerts).should('include', 'Pokemon Does not Exist')
+})
