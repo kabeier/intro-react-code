@@ -28,3 +28,13 @@ it('shows the nav links', () => {
   cy.visit('/')
   cy.contains('nav a', 'About').should('be.visible')
 })
+
+
+it('keeps searched cards after visiting another page', () => {
+  cy.visit('/')
+  cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
+  cy.get('#bulbasaur-card').should('be.visible')
+  cy.get('nav').contains('a', 'About').click()
+  cy.get('nav').contains('a', 'Home').click()
+  cy.get('#bulbasaur-card').should('be.visible')
+})

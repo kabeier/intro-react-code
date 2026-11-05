@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useOutletContext } from 'react-router'
 import PokeContainer from './PokeContainer'
 import PokeForm from './PokeForm'
 
 function PokeSearch() {
   const [pokemonName, setPokemonName] = useState('')
-  const [pokemonList, setPokemonList] = useState([])
+  const { pokemonList, setPokemonList } = useOutletContext()
 
   useEffect(() => {
     console.log('pokemon list changed', pokemonList)
