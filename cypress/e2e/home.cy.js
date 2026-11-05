@@ -6,8 +6,9 @@ it('should have a heading', () => {
   cy.get('header').should('be.visible')
 })
 
-it('starts with an empty poke container', () => {
-  cy.get('#poke-container').children().should('have.length', 0)
+it('should render the Pikachu card on load', () => {
+  cy.get('#pikachu-card').should('be.visible')
+  cy.get('#poke-container').children().should('have.length', 1)
 })
 
 it('changes the title when you click Change Title', () => {
