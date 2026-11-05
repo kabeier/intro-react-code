@@ -2,9 +2,23 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
+  const generateCard = (data) => {
+    const card = document.createElement("div")
+    card.className = "card"
+    card.id = `${data.name}-card`
+    const img = document.createElement("img")
+    img.src = data.sprites.front_default
+    img.alt = data.name
+    card.appendChild(img)
+    const h3 = document.createElement("h3")
+    h3.textContent = data.name
+    card.appendChild(h3)
+    document.querySelector("#poke-container").appendChild(card)
+  }
+
   const getPokemonData = (name) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then((response) => console.log(response.data))
+      .then((response) => generateCard(response.data))
       .catch((error) => console.error("Request failed:", error.message))
       .finally(() => console.log("Request completed"))
   }
