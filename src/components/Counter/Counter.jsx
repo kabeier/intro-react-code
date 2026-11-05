@@ -10,10 +10,10 @@ function Counter() {
   }, [count])
 
   return (
-    <>
-      <h3>Total Clicks: {count}</h3>
+    <section className="flex items-center gap-4 rounded-xl bg-white p-4 shadow">
+      <h3 className="text-lg font-semibold">Total Clicks: {count}</h3>
       <Button onClick={() => setCount((count) => count + 1)}>Click me!</Button>
-    </>
+    </section>
   )
 }
 

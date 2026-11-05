@@ -47,10 +47,10 @@ function PokeSearch() {
   }
 
   return (
-    <>
+    <div className="space-y-6">
       <PokeForm handleSubmit={handleSubmit} pokemonName={pokemonName} setPokemonName={setPokemonName} />
       <PokeContainer pokemonList={pokemonList} rmData={rmData} />
-    </>
+    </div>
   )
 }
 
