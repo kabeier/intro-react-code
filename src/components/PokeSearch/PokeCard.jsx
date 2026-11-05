@@ -1,19 +1,24 @@
 import { useState } from 'react'
-import Button from '../Button'
+import Card from 'react-bootstrap/Card'
+import Badge from 'react-bootstrap/Badge'
+import Stack from 'react-bootstrap/Stack'
+import BsButton from 'react-bootstrap/Button'
 
 function PokeCard({ pokemon, rmData }) {
   const [shiny, setShiny] = useState(false)
 
   return (
-    <div id={`${pokemon.name}-card`} className="w-60 rounded-xl border border-slate-200 bg-white p-4 text-center shadow-md">
-      <img className="mx-auto h-32" src={shiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default} alt={pokemon.name} />
-      <p className="text-sm text-slate-500">Pokédex #{pokemon.id}</p>
-      <h3 className="text-xl font-bold capitalize">{pokemon.name}</h3>
-      <div className="mt-3 flex justify-center gap-2">
-        <Button onClick={() => setShiny((shiny) => !shiny)}>{shiny ? 'Make Normal' : 'Make Shiny'}</Button>
-        <Button onClick={() => rmData(pokemon.id)}>Remove</Button>
-      </div>
-    </div>
+    <Card id={`${pokemon.name}-card`} style={{ width: '15rem' }}>
+      <Card.Img variant="top" src={shiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default} alt={pokemon.name} />
+      <Card.Body>
+        <Badge bg="secondary">Pokédex #{pokemon.id}</Badge>
+        <Card.Title className="text-capitalize">{pokemon.name}</Card.Title>
+        <Stack direction="horizontal" gap={2}>
+          <BsButton variant={shiny ? 'secondary' : 'warning'} onClick={() => setShiny((shiny) => !shiny)}>{shiny ? 'Make Normal' : 'Make Shiny'}</BsButton>
+          <BsButton variant="danger" onClick={() => rmData(pokemon.id)}>Remove</BsButton>
+        </Stack>
+      </Card.Body>
+    </Card>
   )
 }
 
