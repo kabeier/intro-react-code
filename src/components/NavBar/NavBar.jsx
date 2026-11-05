@@ -1,11 +1,16 @@
 import { Link } from 'react-router'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 function NavBar() {
   return (
-    <nav className="mx-auto flex max-w-5xl gap-4 px-6 pt-4">
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-    </nav>
+    <Navbar bg="primary" data-bs-theme="dark" style={{ paddingInline: '1.5rem' }}>
+      <Navbar.Brand as={Link} to="/">PokeSearch</Navbar.Brand>
+      <Nav>
+        <Nav.Link as={Link} to="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/about">About</Nav.Link>
+      </Nav>
+    </Navbar>
   )
 }
 

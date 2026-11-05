@@ -23,3 +23,8 @@ it('navigates with the navbar without reloading the page', () => {
   cy.location('pathname').should('eq', '/about')
   cy.window().its('noReload').should('eq', true)
 })
+
+it('shows the nav links', () => {
+  cy.visit('/')
+  cy.contains('nav a', 'About').should('be.visible')
+})
