@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   const generateCard = (data) => {
+    if (document.getElementById(`${data.name}-card`)) return
     const card = document.createElement("div")
     card.className = "card"
     card.id = `${data.name}-card`
@@ -22,6 +23,7 @@ function App() {
       generateCard(response.data)
     } catch (error) {
       console.error("Request failed:", error.message)
+      alert("Pokemon Does not Exist")
     } finally {
       console.log("Request completed")
     }
