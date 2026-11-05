@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Button from '../Button'
 import PokeContainer from './PokeContainer'
 import PokeForm from './PokeForm'
 
 function PokeSearch() {
   const [pokemonName, setPokemonName] = useState('')
   const [pokemonList, setPokemonList] = useState([])
+  const [shiny, setShiny] = useState(false)
 
   useEffect(() => {
     console.log('pokemon list changed', pokemonList)
@@ -49,7 +51,8 @@ function PokeSearch() {
   return (
     <>
       <PokeForm handleSubmit={handleSubmit} pokemonName={pokemonName} setPokemonName={setPokemonName} />
-      <PokeContainer pokemonList={pokemonList} rmData={rmData} />
+      <Button onClick={() => setShiny((shiny) => !shiny)}>{shiny ? 'All Normal' : 'All Shiny'}</Button>
+      <PokeContainer pokemonList={pokemonList} rmData={rmData} shiny={shiny} />
     </>
   )
 }

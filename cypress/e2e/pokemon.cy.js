@@ -51,3 +51,11 @@ it('can remove a card', () => {
   cy.get('#bulbasaur-card button').contains('Remove').click()
   cy.get('#bulbasaur-card').should('not.exist')
 })
+
+it('makes every card shiny with one click', () => {
+  cy.get('input[id=pokemon-name]').type('Bulbasaur{enter}')
+  cy.get('#bulbasaur-card').should('be.visible')
+  cy.contains('button', 'All Shiny').click()
+  cy.get('#pikachu-card img').should('have.attr', 'src').and('include', 'shiny')
+  cy.get('#bulbasaur-card img').should('have.attr', 'src').and('include', 'shiny')
+})
