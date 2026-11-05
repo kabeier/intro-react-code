@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import PokeCard from './PokeCard'
+import PokeContainer from './PokeContainer'
 
 function PokeSearch() {
   const [pokemonName, setPokemonName] = useState('')
@@ -56,11 +56,7 @@ function PokeSearch() {
         />
         <button type="submit">Search</button>
       </form>
-      <div id="poke-container">
-        {pokemonList.map((pokemon) => (
-          <PokeCard key={pokemon.id} pokemon={pokemon} rmData={rmData} />
-        ))}
-      </div>
+      <PokeContainer pokemonList={pokemonList} rmData={rmData} />
     </>
   )
 }
