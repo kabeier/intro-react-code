@@ -1,0 +1,9 @@
+.box {
+  border: 2px solid crimson;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  color: crimson;
+}
