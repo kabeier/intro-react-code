@@ -1,5 +1,13 @@
+import Card from './Card'
+import Banner from './Banner'
+
 function App() {
-  return <h1>Pokemon Project</h1>
+  return (
+    <>
+      <Card />
+      <Banner />
+    </>
+  )
 }
 
 export default App
