@@ -36,3 +36,26 @@ jobs:
           start: npm run preview
           wait-on: 'http://localhost:4173/pokesearch/'
           config: baseUrl=http://localhost:4173/pokesearch/,specPattern=cypress/e2e-prod/**/*.cy.js
+
+      - name: Save dist/ for GitHub Pages
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: cypress-run
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
